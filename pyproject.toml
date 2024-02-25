@@ -1,0 +1,48 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "airflow-docker-executor"
+version = "1.0.0-rc1"
+description = "Docker executor for Apache Airflow"
+readme = "README.rst"
+authors = [
+    {name="Alexander Verbitsky", email="habibutsu@gmail.com"},
+]
+maintainers = [
+    {name="Alexander Verbitsky", email="habibutsu@gmail.com"},
+]
+keywords = [ "airflow-provider", "docker", "airflow", "integration" ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Framework :: Apache Airflow",
+    "Framework :: Apache Airflow :: Provider",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: System :: Monitoring",
+]
+requires-python = "~=3.8"
+dependencies = [
+    "apache-airflow>=2.6.0",
+    "docker>=5.0.3",
+    "python-slugify>=5.0"
+]
+
+[project.entry-points."airflow.plugins"]
+docker_executor = "airflow_docker_executor.plugin:DockerExecutorPlugin"
+
+[project.urls]
+"Bug Tracker" = "https://github.com/habibutsu/airflow-docker-executor/issues"
+"Source Code" = "https://github.com/habibutsu/airflow-docker-executor"
+
+
+[tool.flit.module]
+name = "airflow_docker_executor"
